@@ -1,0 +1,132 @@
+<header class="header-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+        <div class="container">
+            <a class="navbar-brand" href="home">Home</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="user"><span class="main-cl">User</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline mr-auto" target="_self">
+                    <div class="form-group">
+                        <input id="search-field" class="form-control me-2 search-field" type="search" placeholder="Họ tên"
+                               aria-label="Search" name="search">
+                    </div>
+                    <button id="btnSearch" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <span class="navbar-text">
+                        <a class="login" href="home">Log Out</a>
+                    </span>
+                <a class="btn btn-light action-button" role="button" href="">User</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container hero">
+        <div class="row">
+            <table class="table table-bordered">
+                <thead class="main-table">
+                <th scope="col">#</th>
+                <th scope="col"><center>Avatar</center></th>
+                <th scope="col">Họ tên</th>
+                <th scope="col">Ngày Sinh</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Giới tính</th>
+                <th scope="col">Sở thích</th>
+                <th scope="col">Giới thiệu ngắn</th>
+                <th scope="col"></th>
+                </thead>
+                <tbody class="userSearch">
+                </tbody>
+            </table>
+
+            <form>
+                <span>Họ tên</span><input class="hoten" name="hoten" type="text" value="" placeholder="Họ tên">
+                <span>Ngày sinh</span><input class="date" name="date" type="date" value="">
+                <span>Số điện thoại</span><input class="phone" name="phone" type="number" value="" placeholder="Số điện thoại">
+                <span>Giới tính</span><input class="gioitinh" name="gioitinh" type="text" value="" placeholder="Giới tính">
+                <span>Giới thiệu</span><input class="gioithieu" name="gioithieu" type="text" value="" placeholder="Giới thiệu">
+            </form>
+            <button class="add-content" onclick="addcontent()">Thêm</button>
+
+            <table class="table table-bordered">
+                <thead  class="main-table">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"><center>Avatar</center></th>
+                    <th scope="col">Họ tên</th>
+                    <th scope="col">Ngày Sinh</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Giới tính</th>
+                    <th scope="col">Sở thích</th>
+                    <th scope="col">Giới thiệu ngắn</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody class="listUser">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</header>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+
+    var listUser = $('.listUser');
+    var userSearch = $('.userSearch');
+    var inputSearch = $('#search-field');
+    var buttonSearch = $('#btnSearch');
+    buttonSearch.click(function(ev){
+        ev.preventDefault();
+        var users = arr.filter(user => user.name === inputSearch.val().trim());
+        if(users!=null){
+            var p = '';
+            $('.rowSearch').css({'display':'block'})
+            users.forEach((element,index) => {
+                p += `<tr class="table-content">
+                    <td>${index +1}</td>
+                            <td><center><img class="img-user"  src="${element.images}" /></center></td>
+                            <td>${element.name}</td>
+                            <td>${element.ngaySinh}</td>
+                            <td >${element.sdt}</td>
+                            <td >${element.gioiTinh}</td>
+                            <td >${element.soThich}</td>
+                            <td >${element.gioiThieu}</td>
+                            <td><button>Sửa</button><button>Xóa</button></td>
+                        </tr> `
+            })
+            userSearch.html(p)
+        }else{
+            $('.rowSearch').css({'display':'none'})
+        }
+    })
+
+
+    var object = {
+        name: 'Phat Nguyen',
+        ngaySinh: '01/01/2001',
+        sdt: '0326514789',
+        gioiTinh: 'nam',
+        soThich: 'Nghe nhac',
+        gioiThieu: '...',
+        images: ['./assets/img/IMG_3519.JPG']
+    }
+
+    var arr = [object, object, object, object];
+
+    arr.forEach(function (element, index) {
+        listUser.append(`<tr class="table-content">
+                            <th scope="row">${index + 1}</th>
+                            <td><center><img class="img-user"  src="${element.images[0]}" /></center></td>
+                            <td>${element.name}</td>
+                            <td>${element.ngaySinh}</td>
+                            <td >${element.sdt}</td>
+                            <td >${element.gioiTinh}</td>
+                            <td >${element.soThich}</td>
+                            <td >${element.gioiThieu}</td>
+                            <td><button>Sửa</button><button>Xóa</button></td>
+
+                        </tr> `)
+    })
+</script>
