@@ -22,6 +22,13 @@ app.get('/',function(request,reponse){
 
     reponse.render('home');
 });
+app.get('/home',function(request,reponse){
+    // var name = 'Nguyen Thanh Phat';
+    // var Msv = 'PH11422';
+    // var arr = ['Apple', 'Class','Public','Name'];
+
+    reponse.render('home');
+});
 app.get('/user',function(request,reponse){
     // var name = 'Nguyen Thanh Phat';
     // var msv = 'PH11422';
