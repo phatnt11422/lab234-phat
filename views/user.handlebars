@@ -10,14 +10,14 @@
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
                     <div class="form-group">
-                        <input id="search-field" class="form-control me-2 search-field" type="search" placeholder="Họ tên"
-                               aria-label="Search" name="search">
+                        <input id="search-field" class="form-control me-2 search-field" type="search"
+                            placeholder="Họ tên" aria-label="Search" name="search">
                     </div>
                     <button id="btnSearch" class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <span class="navbar-text">
-                        <a class="login" href="home">Log Out</a>
-                    </span>
+                    <a class="login" href="home">Log Out</a>
+                </span>
                 <a class="btn btn-light action-button" role="button" href="">User</a>
             </div>
         </div>
@@ -26,15 +26,17 @@
         <div class="row">
             <table class="table table-bordered">
                 <thead class="main-table">
-                <th scope="col">#</th>
-                <th scope="col"><center>Avatar</center></th>
-                <th scope="col">Họ tên</th>
-                <th scope="col">Ngày Sinh</th>
-                <th scope="col">Số điện thoại</th>
-                <th scope="col">Giới tính</th>
-                <th scope="col">Sở thích</th>
-                <th scope="col">Giới thiệu ngắn</th>
-                <th scope="col"></th>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                        <center>Avatar</center>
+                    </th>
+                    <th scope="col">Họ tên</th>
+                    <th scope="col">Ngày Sinh</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Giới tính</th>
+                    <th scope="col">Sở thích</th>
+                    <th scope="col">Giới thiệu ngắn</th>
+                    <th scope="col"></th>
                 </thead>
                 <tbody class="userSearch">
                 </tbody>
@@ -43,25 +45,30 @@
             <form>
                 <span>Họ tên</span><input class="hoten" name="hoten" type="text" value="" placeholder="Họ tên">
                 <span>Ngày sinh</span><input class="date" name="date" type="date" value="">
-                <span>Số điện thoại</span><input class="phone" name="phone" type="number" value="" placeholder="Số điện thoại">
-                <span>Giới tính</span><input class="gioitinh" name="gioitinh" type="text" value="" placeholder="Giới tính">
-                <span>Giới thiệu</span><input class="gioithieu" name="gioithieu" type="text" value="" placeholder="Giới thiệu">
+                <span>Số điện thoại</span><input class="phone" name="phone" type="number" value=""
+                    placeholder="Số điện thoại">
+                <span>Giới tính</span><input class="gioitinh" name="gioitinh" type="text" value=""
+                    placeholder="Giới tính">
+                <span>Giới thiệu</span><input class="gioithieu" name="gioithieu" type="text" value=""
+                    placeholder="Giới thiệu">
             </form>
             <button class="add-content" onclick="addcontent()">Thêm</button>
 
             <table class="table table-bordered">
-                <thead  class="main-table">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col"><center>Avatar</center></th>
-                    <th scope="col">Họ tên</th>
-                    <th scope="col">Ngày Sinh</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">Sở thích</th>
-                    <th scope="col">Giới thiệu ngắn</th>
-                    <th scope="col"></th>
-                </tr>
+                <thead class="main-table">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">
+                            <center>Avatar</center>
+                        </th>
+                        <th scope="col">Họ tên</th>
+                        <th scope="col">Ngày Sinh</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Giới tính</th>
+                        <th scope="col">Sở thích</th>
+                        <th scope="col">Giới thiệu ngắn</th>
+                        <th scope="col"></th>
+                    </tr>
                 </thead>
                 <tbody class="listUser">
                 </tbody>
@@ -69,23 +76,22 @@
         </div>
     </div>
 </header>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 <script>
 
     var listUser = $('.listUser');
     var userSearch = $('.userSearch');
     var inputSearch = $('#search-field');
     var buttonSearch = $('#btnSearch');
-    buttonSearch.click(function(ev){
+    buttonSearch.click(function (ev) {
         ev.preventDefault();
         var users = arr.filter(user => user.name === inputSearch.val().trim());
-        if(users!=null){
+        if (users != null) {
             var p = '';
-            $('.rowSearch').css({'display':'block'})
-            users.forEach((element,index) => {
+            $('.rowSearch').css({ 'display': 'block' })
+            users.forEach((element, index) => {
                 p += `<tr class="table-content">
-                    <td>${index +1}</td>
+                    <td>${index + 1}</td>
                             <td><center><img class="img-user"  src="${element.images}" /></center></td>
                             <td>${element.name}</td>
                             <td>${element.ngaySinh}</td>
@@ -97,8 +103,8 @@
                         </tr> `
             })
             userSearch.html(p)
-        }else{
-            $('.rowSearch').css({'display':'none'})
+        } else {
+            $('.rowSearch').css({ 'display': 'none' })
         }
     })
 
